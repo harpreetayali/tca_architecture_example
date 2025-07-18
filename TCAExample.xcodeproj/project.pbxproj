@@ -14,9 +14,22 @@
 		10300DA12E2805A3004A1D78 /* TCAExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TCAExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		10300DC82E2AAB02004A1D78 /* Exceptions for "TCAExample" folder in "TCAExample" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 10300DA02E2805A3004A1D78 /* TCAExample */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		10300DA32E2805A3004A1D78 /* TCAExample */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				10300DC82E2AAB02004A1D78 /* Exceptions for "TCAExample" folder in "TCAExample" target */,
+			);
 			path = TCAExample;
 			sourceTree = "<group>";
 		};
@@ -265,6 +278,7 @@
 				DEVELOPMENT_TEAM = K5Y84SU9JD;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TCAExample/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -293,6 +307,7 @@
 				DEVELOPMENT_TEAM = K5Y84SU9JD;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TCAExample/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
