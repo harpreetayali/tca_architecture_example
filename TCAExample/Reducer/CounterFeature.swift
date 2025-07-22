@@ -12,7 +12,7 @@ import Foundation
 struct CounterFeature {
     
     @ObservableState
-    struct State {
+    struct State: Equatable {
         var counter: Int = 0
         var fact: String?
         var isLoading: Bool = false
@@ -29,6 +29,9 @@ struct CounterFeature {
     }
     
     enum CancelID { case timer }
+    
+    @Dependency(\.continuousClock) var clock
+    @Dependency(\.numberFact) var numberFact
     
     var body: some ReducerOf<Self> {
         Reduce { state, action in
@@ -50,11 +53,7 @@ struct CounterFeature {
                 
                 return .run { [count = state.counter] send in
                     do {
-                        let (data, _) = try await URLSession.shared
-                            .data(from: URL(string: "http://numbersapi.com/\(count)")!)
-                        
-                        let fact = String(decoding: data, as: UTF8.self)
-                        await send(.factResponse(fact))
+                        try await send(.factResponse(self.numberFact.fetch(count)))
                     }catch {
                         await send(.factResponse(error.localizedDescription))
                     }
@@ -68,8 +67,7 @@ struct CounterFeature {
                 state.isTimerRunning.toggle()
                 if state.isTimerRunning {
                     return .run { send in
-                        while true {
-                            try await Task.sleep(for: .seconds(1))
+                        for await _ in self.clock.timer(interval: .seconds(1)) {
                             await send(.timerTick)
                         }
                     }
